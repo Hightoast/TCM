@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <title>signup</title>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" onclick="window.history.back();"><img src="images/arrow.png" alt="back" id="back"></a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="button">Home</a></li>
+                <li><a href="about.html" class="button">About</a></li>
+                <li><a href="contact.html" class="button">Contact</a></li>
+                <li><a href="more.html" class="button">More</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="contact">
+            <div class="contact-container"></div>
+                <h1 id="h1">NewsPaper Signup</h1>
+                <form action="#" method="post">
+                    <div class="form-group">
+                            <label for="full-name">Full name <span>*</span></label>
+                        <div class="name-fields">
+                            <input type="text" id="first-name" placeholder="First">
+                            <input type="text" id="last-name" placeholder="Last">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span>*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Leave us a few words <span>*</span></label>
+                        <textarea id="message" placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+  const form = document.getElementById("signup-form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const email = formData.get("email");
+
+    const res = await fetch("/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
+    });
+
+    alert(await res.text());
+  });
+</script>
+</body>
+</html>
