@@ -10,6 +10,7 @@
     <title>signup</title>
 </head>
 <body>
+    <div id="notif"></div>
     <header>
         <h1><a href="index.html" onclick="window.history.back();"><img src="images/arrow.png" alt="back" id="back"></a></h1>
         <nav>
@@ -25,7 +26,7 @@
         <div class="contact">
             <div class="contact-container"></div>
                 <h1 id="h1">NewsPaper Signup</h1>
-                <form action="#" method="post">
+                <form id="signup-form">
                     <div class="form-group">
                             <label for="full-name">Full name <span>*</span></label>
                         <div class="name-fields">
@@ -46,21 +47,6 @@
             </div>
         </div>
     </section>
-    <script>
-  const form = document.getElementById("signup-form");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const email = formData.get("email");
-
-    const res = await fetch("/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email })
-    });
-
-    alert(await res.text());
-  });
-</script>
+    <script src="subscribe.js"></script>
 </body>
 </html>

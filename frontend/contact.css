@@ -173,3 +173,55 @@ section{
   input:focus{
     box-shadow:6px 6px 8px 5px rgba(199, 14, 14, 0.825) ;
   }
+
+
+
+#notif {
+  z-index: 1000000;
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  min-width: 280px;
+  max-width: 420px;
+
+  padding: 14px 20px;
+  border-radius: 8px;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  text-align: center;
+
+  color: #fff;
+  background: #333;
+
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* visible state */
+#notif.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* color variants */
+#notif.success {
+  background: #1a7f37; /* Chrome green */
+}
+
+#notif.error {
+  background: #d93025; /* Chrome red */
+}
+
+#notif.info {
+  background: #1a73e8; /* Chrome blue */
+}
